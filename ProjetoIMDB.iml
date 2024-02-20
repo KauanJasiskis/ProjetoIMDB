@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="java" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/builtins/src/main/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/builtins/src/test/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/console/src/main/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/console/src/test/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/demo/src/main/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/graal/src/main/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/groovy/src/main/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/jansi-core/src/main/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/jansi-core/src/test/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/native/src/main/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/native/src/test/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/reader/src/main/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/reader/src/test/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/remote-ssh/src/main/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/remote-telnet/src/main/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/style/src/main/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/style/src/test/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/terminal-ffm/src/main/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/terminal-ffm/src/test/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/terminal-jansi/src/main/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/terminal-jansi/src/test/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/terminal-jna/src/main/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/terminal-jna/src/test/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/terminal-jni/src/main/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/terminal-jni/src/test/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/terminal/src/main/java" />
+          <root url="jar://$USER_HOME$/Desktop/biblioteca/jline3-jline-parent-3.25.1.zip!/jline3-jline-parent-3.25.1/terminal/src/test/java" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>
