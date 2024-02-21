@@ -1,6 +1,8 @@
 package br.com.adatech.IMDB.Modelo;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
 public abstract class Pessoa {
@@ -36,11 +38,11 @@ public abstract class Pessoa {
         this.dataDeNasicmento = dataDeNasicmento;
     }
 
-    @Override
-    public String toString() {
-        return "br.com.adatech.IMDB.Modelo.Pessoa{" +
-                "nome='" + nome + '\'' +
-                ", dataDeNasicmento=" + dataDeNasicmento +
-                '}';
+
+
+    public Integer calculaIdade(){
+        LocalDate hoje = LocalDate.now();
+        Period periodo = Period.between(dataDeNasicmento,hoje);
+        return periodo.getYears();
     }
 }

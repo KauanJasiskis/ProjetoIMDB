@@ -1,6 +1,6 @@
 package br.com.adatech.IMDB.Modelo;
 
-import br.com.adatech.IMDB.Controle.Services;
+import br.com.adatech.IMDB.View.FormataData;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -11,34 +11,30 @@ import java.util.List;
 public class Filme {
     private String nome;
     private LocalDate dataDeLancamento;
-    private List<Diretor> diretores = new ArrayList<>();
-    private List<Ator> atores = new ArrayList<>();
     private List<Roteirista> roteiristas = new ArrayList<>();
+    private List<Ator> atores = new ArrayList<>();
+    private List<Diretor> diretores = new ArrayList<>();
+
+
     private Double notaGeral = 0.0;
     private Integer vezesAvaliado = 0;
 
     private Double notaFinal = 0.0;
-    public Filme(){}
+
+    public Filme() {
+    }
 
     public Filme(
             String nome,
-            LocalDate dataDeLancamento,
-            List<Diretor> diretores,
-            List<Ator> atores,
-            List<Roteirista> roteiristas
-    ) {
+            LocalDate dataDeLancamento){
         this.nome = nome;
         this.dataDeLancamento = dataDeLancamento;
-        this.diretores = diretores;
-        this.atores = atores;
-        this.roteiristas = roteiristas;
     }
 
-    public Filme(
-            String nome,
-            LocalDate dataDeLancamento) {
-        this(nome, dataDeLancamento, null, null, null);
-    }
+
+
+
+
 
 
     public String getNome() {
@@ -49,101 +45,105 @@ public class Filme {
         this.nome = nome;
     }
 
-    public String getDataDeLancamento() {
-        DateTimeFormatter formatar = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return dataDeLancamento.format(formatar);
+    public LocalDate getDataDeLancamento() {
+       return dataDeLancamento;
     }
 
     public void setDataDeLancamento(LocalDate dataDeLancamento) {
         this.dataDeLancamento = dataDeLancamento;
     }
 
-    public List<Diretor> getDiretores() {
-        return Collections.unmodifiableList(diretores);
-    }
-
-    public void adicionarDiretores(Diretor diretor){
-        diretores.add(diretor);
-    }
-
-    public List<Ator> getAtores() {
-        return Collections.unmodifiableList(atores);
-    }
-
-    public void adicionarAtores(Ator ator){
-        atores.add(ator);
-    }
-
-    public List<Roteirista> getRoteiristas() {
-
-        return Collections.unmodifiableList(roteiristas);
-    }
-
-    public void adicionarRoteirista(Roteirista roteirista){
-        roteiristas.add(roteirista);
-    }
-    public void setNota(Double notaAvaliacao){
-        this.notaGeral += notaAvaliacao;
-        vezesAvaliado += 1;
-    }
 
     public Double getNotaGeral() {
         return notaGeral;
     }
 
+    public void setNotaGeral(Double notaGeral) {
+        this.notaGeral += notaGeral;
+        this.vezesAvaliado = vezesAvaliado + 1;
+    }
+
+    public void adicionarAtor(Ator ator) {
+        atores.add(ator);
+    }
+
+    public void adicionarDiretor(Diretor diretor) {
+        diretores.add(diretor);
+    }
+
+    public void adicionarRoteirista(Roteirista roteirista) {
+        roteiristas.add(roteirista);
+    }
+
+    public List<String> getRoteiristas() {
+        List<String> nomeDosRoteiristas = new ArrayList<>();
+        for (Roteirista roteirista : roteiristas){
+            nomeDosRoteiristas.add(roteirista.getNome());
+        }
+         return Collections.unmodifiableList(nomeDosRoteiristas);
+    }
+
+    public List<String> getAtores() {
+        List<String> nomeDosAtores = new ArrayList<>();
+        for (Ator ator : atores){
+            nomeDosAtores.add(ator.getNome());
+        }
+        return Collections.unmodifiableList(nomeDosAtores);
+    }
+    public List<String> getDiretores() {
+        List<String> nomeDosDiretores = new ArrayList<>();
+        for(Diretor diretor : diretores){
+            ;nomeDosDiretores.add(diretor.getNome());
+        }
+        return Collections.unmodifiableList(nomeDosDiretores);
+
+    }
+
     public Integer getVezesAvaliado() {
         return vezesAvaliado;
     }
-    public Double getNotaFinal(Filme filme) {
+
+    public void setVezesAvaliado(Integer vezesAvaliado) {
+        this.vezesAvaliado = vezesAvaliado;
+    }
+
+    public Double getNotaFinal() {
         if(notaGeral.equals(0.0)){
             return 0.0;
         }
-        return Services.cauculaNotaGeralFilme(filme);
+        else {
+            return notaGeral / vezesAvaliado;
+        }
     }
 
+    public void setNotaFinal(Double notaFinal) {
+        this.notaFinal = notaFinal;
+    }
     @Override
     public String toString() {
-        StringBuilder sbAtores = new StringBuilder();
-        if(!atores.isEmpty()) {
-            for (Ator ator : atores) {
-                sbAtores.append(ator.getNome()).append(",");
-            }
-            sbAtores.delete(sbAtores.length() - 1, sbAtores.length());
+        String string = "Nome: " + getNome();
+        if(getAtores()== null || getAtores().isEmpty()){
+            string += "\nAtores: Ainda não existem Atores associados a este autor";
+        } else {
+            string += "\nAtores: " + getAtores();
         }
-        else {
-            sbAtores.append("Ainda nao existem atores associados a esse filme");
+        if(getDiretores() == null || getDiretores().isEmpty()) {
+            string += "\nDiretores: Ainda não existem Diretores associados a este autor";
+        } else {
+            string += "\nDiretores: " + getDiretores();
+        }
+        if(getAtores()== null || getDiretores().isEmpty()){
+            string += "\nRoteiristas: Ainda não existem Atores associados a este autor";
+        } else {
+            string += "\nRoteiristas: " + getRoteiristas();
+        }
+        DateTimeFormatter formatar = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        string += "\nData de lancamento: " + getDataDeLancamento().format(formatar);
+        return string;
     }
-        StringBuilder sbDiretores = new StringBuilder();
-        if(!diretores.isEmpty()) {
-            for (Diretor diretor : diretores) {
-                sbDiretores.append(diretor.getNome()).append(",");
-            }
-            sbDiretores.delete(sbDiretores.length() - 1, sbDiretores.length());
-        }
-        else {
-            sbDiretores.append("Ainda nao existem diretores associados a esse filme");
-        }
-        StringBuilder sbRoteiristas = new StringBuilder();
-        if(!roteiristas.isEmpty()) {
-            for (Roteirista roteirista : roteiristas) {
-                sbRoteiristas.append(roteirista.getNome()).append(",");
-            }
-            sbRoteiristas.delete(sbRoteiristas.length() - 1, sbRoteiristas.length());
-        }
-        else {
-            sbRoteiristas.append("Ainda nao existem roteiristas associados a esse filme");
-        }
+}
 
-        return "\nNome do filme = '" + nome + '\'' +
-                " \nDataDeLancamento = " + getDataDeLancamento() +
-                " \nDiretor = " + sbDiretores +
-                " \nAtores = " + sbAtores +
-                " \nRoteirista = " + sbRoteiristas +
-                " \nFilme = " + getNotaFinal(this) + " Vezes avaliado: " + vezesAvaliado;
 
-    }
-
-    }
 
 
 

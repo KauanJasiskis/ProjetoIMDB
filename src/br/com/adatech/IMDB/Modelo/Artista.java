@@ -26,5 +26,15 @@ public abstract class Artista extends Pessoa {
 
     }
 
-
+    @Override
+    public String toString() {
+        String string = "Nome: " + getNome();
+        if(getFilmesTrabalhados() == null){
+            string += "\nFilmes: Ainda não existem filmes associados a este autor";
+        } else {
+            string += "\nFilmes: " + getFilmesTrabalhados();
+        }
+        string += "\nIdade: " + calculaIdade();
+        return string;
+    }
 }

@@ -1,47 +1,66 @@
 package br.com.adatech.IMDB.View;
 
-import br.com.adatech.IMDB.Controle.ControladorMenu;
-import br.com.adatech.IMDB.Controle.Services;
-import br.com.adatech.IMDB.Modelo.Ator;
-import br.com.adatech.IMDB.Modelo.Diretor;
-import br.com.adatech.IMDB.Modelo.Filme;
-import br.com.adatech.IMDB.Modelo.Roteirista;
-
-import javax.naming.ldap.Control;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import br.com.adatech.IMDB.View.Artista.AssociarArtistaView;
+import br.com.adatech.IMDB.View.Artista.CadastraArtistaView;
+import br.com.adatech.IMDB.View.Artista.ListarArtistaView;
+import br.com.adatech.IMDB.View.filme.AvaliaFilmeView;
+import br.com.adatech.IMDB.View.filme.CadastraFilmeView;
+import br.com.adatech.IMDB.View.filme.ListarFilmeView;
+import br.com.adatech.IMDB.View.filme.PesquisarFilmeView;
+import br.com.adatech.IMDB.service.services.AtorService;
+import br.com.adatech.IMDB.service.services.DiretorService;
+import br.com.adatech.IMDB.service.services.FilmeService;
+import br.com.adatech.IMDB.service.services.RoteiristaService;
 
 
-public class Menu {
-    private static List<Filme> filmes = new ArrayList<>();
-    private static List<Ator> atores = new ArrayList<>();
-    private static List<Diretor> diretores = new ArrayList<>();
+public class Menu extends AbstractMenuView {
+    private FilmeService filmeService;
+    private AtorService atorService;
+    private DiretorService diretorService;
+    private RoteiristaService roteiristaService;
 
-    private static List<Roteirista> roteiristas = new ArrayList<>();
 
+    public Menu(FilmeService filmeService,AtorService atorService,DiretorService diretorService,RoteiristaService roteiristaService) {
+        super(new String[]{
+                "BEM VINDO AO IMDB!",
 
-    public void apresentaMenu() {
-        ControladorMenu cntrlMenu = new ControladorMenu();
-        Scanner sc = new Scanner(System.in);
-        Integer opcao;
-        do {
-            System.out.println("BEM VINDO AO IMDB!");
-            System.out.println("Selecione uma Opcao: ");
-            System.out.println("1 - Cadastrar Filme ");
-            System.out.println("2 - Cadastrar Artista");
-            System.out.println("3 - Avaliar Filme");
-            System.out.println("4 - Associar Artista");
-            System.out.println("5 - Pesquisar Filme");
-            System.out.println("6 - Listar Filmes");
-            System.out.println("7 - Listar Artista");
-            System.out.println("8 - Sair");
-            opcao = sc.nextInt();
-            cntrlMenu.logicaMenu(opcao,sc);
-        } while (!opcao.equals(8));
-        sc.close();
+                "Selecione uma Opcao: ",
+
+                "1 - Cadastrar Filme",
+                "2 - Cadastrar Artista",
+                "3 - Avaliar Filme",
+                "4 - Associar Artista",
+                "5 - Pesquisar Filme",
+                "6 - Listar Filmes",
+                "7 - Listar Artista",
+                "0 - Sair",
+
+        });
+        this.filmeService = filmeService;
+        this.atorService = atorService;
+        this.diretorService = diretorService;
+        this.roteiristaService = roteiristaService;
+    }
+    @Override
+    protected Boolean validOption(Integer option) {
+        return option >= 0 && option <= 7;
+    }
+
+    @Override
+    protected void executeOption(Integer option) {
+        switch (option){
+            case 1 -> new CadastraFilmeView(filmeService).execute();
+            case 2 -> new CadastraArtistaView(atorService,diretorService,roteiristaService).execute();
+            case 3 -> new AvaliaFilmeView(filmeService).execute();
+            case 4 -> new AssociarArtistaView(filmeService,atorService,diretorService,roteiristaService).execute();
+            case 5 -> new PesquisarFilmeView(filmeService).execute();
+            case 6 -> new ListarFilmeView(filmeService).execute();
+            case 7 -> new ListarArtistaView(filmeService,atorService,diretorService,roteiristaService).execute();
+            case 0 -> System.exit(1);
+            default -> System.out.println("Opcao indisponivel");
+        }
+        execute();
+
     }
 }
 

@@ -12,13 +12,9 @@ public class Diretor extends Artista {
         ){
             super(nome,dataNascimento);
         }
-    @Override
-    public String toString() {
-        return  "\nNome: " + getNome() +
-                "\nData de nascimento: " + getDataDeNasicmento() +
-                "\nFilmes Trabalhados: " + getFilmesTrabalhados();
+
 
 
     }
 
-}
+
