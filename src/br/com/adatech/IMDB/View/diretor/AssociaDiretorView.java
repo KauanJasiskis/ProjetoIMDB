@@ -1,5 +1,6 @@
 package br.com.adatech.IMDB.View.diretor;
 
+import br.com.adatech.IMDB.Modelo.Diretor;
 import br.com.adatech.IMDB.Modelo.Filme;
 import br.com.adatech.IMDB.service.services.AtorService;
 import br.com.adatech.IMDB.service.services.DiretorService;
@@ -24,10 +25,14 @@ public class AssociaDiretorView {
         System.out.println("Digite o nome do filme que deseja que o ator seja associado");;
         String nomeFilme = scanner.nextLine();
         Filme filmeParaAssociar = null;
+        Diretor diretorParaAssociar = null;
         if(diretorService.buscaDiretorUnico(nomeDiretor)!= null && filmeService.filmeUnico(nomeFilme) != null){
             filmeParaAssociar = filmeService.filmeUnico(nomeFilme);
+            diretorParaAssociar = diretorService.buscaDiretorUnico(nomeDiretor);
             filmeParaAssociar.adicionarDiretor(diretorService.buscaDiretorUnico(nomeDiretor));
+            diretorParaAssociar.adicionarFilmesTrabalhados(filmeParaAssociar);
             filmeService.atualizar(filmeParaAssociar);
+            diretorService.atualizar(diretorParaAssociar);
         }
         ;
 

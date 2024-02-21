@@ -10,7 +10,7 @@ public class BancoDeDados {
     public void inserirObjeto(Object objeto){
         Set objetos = colecaoDeObjetos(objeto.getClass());
         objetos.add(objeto);
-    }
+        }
     public List buscarObjetosPorTipo(Class clazz){
         Set objetos = colecaoDeObjetos(clazz);
         return new ArrayList(objetos);
