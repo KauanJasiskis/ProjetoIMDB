@@ -18,13 +18,13 @@ public class RoteiristaService {
 
     public void criar(Roteirista roteirista) throws ServiceException {
         if (roteirista == null) {
-            throw new RuntimeException("Roteirista nao pode ser nulo");
+            throw new ModeloInvalidoException("Roteirista nao pode ser nulo");
         }
         if (roteirista.getNome() == null) {
-            throw new RuntimeException("Roteirista nao pode ser nulo");
+            throw new ModeloInvalidoException("Roteirista nao pode ser nulo");
         }
         if (roteirista.getDataDeNasicmento() == null) {
-            throw new RuntimeException("Data de nascimento nao pode ser nulo");
+            throw new ModeloInvalidoException("Data de nascimento nao pode ser nulo");
         }
         try {
             repositorio.gravar(roteirista);

@@ -19,11 +19,11 @@ public class AtorService
         if(ator == null){
             throw new ModeloInvalidoException("Ator nao pode ser nulo");
         }
-        if(ator.getNome()==null){
+        if(ator.getNome() == null){
             throw new ModeloInvalidoException("Nome do ator nao pode ser nulo");
         }
         if(ator.getDataDeNasicmento() == null){
-            throw new ModeloInvalidoException("Data de nascimento nao pode ser nulo");
+            throw new ModeloInvalidoException("Data de nascimento nao pode ser nula");
         }
         try {
             repositorio.gravar(ator);
