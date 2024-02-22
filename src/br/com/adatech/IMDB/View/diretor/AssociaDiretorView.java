@@ -26,7 +26,7 @@ public class AssociaDiretorView {
         String nomeFilme = scanner.nextLine();
         Filme filmeParaAssociar = null;
         Diretor diretorParaAssociar = null;
-        if(diretorService.buscaDiretorUnico(nomeDiretor)!= null && filmeService.filmeUnico(nomeFilme) != null){
+
             filmeParaAssociar = filmeService.filmeUnico(nomeFilme);
             diretorParaAssociar = diretorService.buscaDiretorUnico(nomeDiretor);
             filmeParaAssociar.adicionarDiretor(diretorService.buscaDiretorUnico(nomeDiretor));
@@ -38,5 +38,5 @@ public class AssociaDiretorView {
 
     }
 
-}
+
 

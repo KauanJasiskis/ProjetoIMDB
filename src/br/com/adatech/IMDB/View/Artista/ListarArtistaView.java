@@ -41,6 +41,7 @@ public class ListarArtistaView extends AbstractMenuView {
             case 1 -> new ListarAtorView(this.atorService).execute();
             case 2 -> new ListarDiretorView(this.diretorService).execute();
             case 3 -> new ListarRoteiristaView(this.roteiristaService).execute();
+            default-> System.out.println("Opcao indisponivel");
         }
 
     }

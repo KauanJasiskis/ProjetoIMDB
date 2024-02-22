@@ -19,7 +19,7 @@ public class FilmeRepositorio extends AbstractRepositorio{
         List filmesFiltrados = new ArrayList();
         for(Object objeto : filmes) {
             Filme filme = (Filme) objeto;
-            if(compararPorNomeFilme(filme,nomeFilme)){
+            if(compararPorNomeFilmeNomeIgual(filme,nomeFilme)){
                 filmesFiltrados.add(filme);
             }
 
@@ -47,7 +47,15 @@ public class FilmeRepositorio extends AbstractRepositorio{
     protected Boolean compararPorNomeFilme(Filme filme,String nome){
         return filme != null
                 && filme.getNome() != null
+                && filme.getNome().equals(nome);
+    }
+    protected Boolean compararPorNomeFilmeNomeIgual(Filme filme,String nome){
+        return filme != null
+                && filme.getNome() != null
                 && filme.getNome().equalsIgnoreCase(nome);
     }
 
-}
+
+    }
+
+

@@ -25,21 +25,13 @@ public class AssociaAtorView {
         String nomeFilme = scanner.nextLine();
         Filme filmeParaAssociar = null;
         Ator atorParaAssociar = null;
-        if(atorService.buscaAtorUnico(nomeAtor)!= null && filmeService.filmeUnico(nomeFilme) != null){
             filmeParaAssociar = filmeService.filmeUnico(nomeFilme);
             atorParaAssociar = atorService.buscaAtorUnico(nomeAtor);
             filmeParaAssociar.adicionarAtor(atorService.buscaAtorUnico(nomeAtor));
             atorParaAssociar.adicionarFilmesTrabalhados(filmeParaAssociar);
             filmeService.atualizar(filmeParaAssociar);
             atorService.atualizar(atorParaAssociar);
-
             System.out.println("Ator associado com sucesso");
-        }
-        else{
-            System.out.println("Erro");
-        }
-        ;
-
     }
 
 }

@@ -26,7 +26,6 @@ public class AssociaRoteiristaView {
         String nomeFilme = scanner.nextLine();
         Filme filmeParaAssociar = null;
         Roteirista roteiristaParaAssociar = null;
-        if(roteiristaService.buscaRoteiristaUnico(nomeRoteirista)!= null && filmeService.filmeUnico(nomeFilme) != null){
             filmeParaAssociar = filmeService.filmeUnico(nomeFilme);
             roteiristaParaAssociar = roteiristaService.buscaRoteiristaUnico(nomeRoteirista);
             filmeParaAssociar.adicionarRoteirista(roteiristaService.buscaRoteiristaUnico(nomeRoteirista));
@@ -38,5 +37,5 @@ public class AssociaRoteiristaView {
 
     }
 
-}
+
 

@@ -16,7 +16,7 @@ public class AtorRepositorio extends AbstractRepositorio{
         Ator atorEncontrado = null;
         for (Object objeto : atores) {
             Ator ator = (Ator) objeto;
-            if (compararPorNomeDiretor(ator, nomeAtor)) {
+            if (compararPorNomeAtor(ator, nomeAtor)) {
                atorEncontrado = ator;
                 break;
             }
@@ -26,7 +26,7 @@ public class AtorRepositorio extends AbstractRepositorio{
 
 
 
-    protected Boolean compararPorNomeDiretor(Ator ator, String nome){
+    protected Boolean compararPorNomeAtor(Ator ator, String nome){
         return ator != null
                 && ator.getNome()!= null
                 && nome != null

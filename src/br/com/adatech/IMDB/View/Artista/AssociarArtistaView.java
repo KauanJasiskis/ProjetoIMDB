@@ -43,6 +43,7 @@ public class AssociarArtistaView extends AbstractMenuView {
             case 1 -> new AssociaAtorView(this.atorService,this.filmeService).execute();
             case 2 -> new AssociaDiretorView(this.diretorService,this.filmeService).execute();
             case 3 -> new AssociaRoteiristaView(this.roteiristaService,this.filmeService).execute();
+            default -> System.out.println("Opcao indisponivel");
         }
 
     }
