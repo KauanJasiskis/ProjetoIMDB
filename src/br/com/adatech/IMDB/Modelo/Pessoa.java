@@ -29,9 +29,8 @@ public abstract class Pessoa {
         this.nome = nome;
     }
 
-    public String getDataDeNasicmento() {
-        DateTimeFormatter formatar = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return dataDeNasicmento.format(formatar);
+    public LocalDate getDataDeNasicmento() {
+        return dataDeNasicmento;
     }
 
     public void setDataDeNasicmento(LocalDate dataDeNasicmento) {
@@ -42,7 +41,7 @@ public abstract class Pessoa {
 
     public Integer calculaIdade(){
         LocalDate hoje = LocalDate.now();
-        Period periodo = Period.between(dataDeNasicmento,hoje);
+        Period periodo = Period.between(getDataDeNasicmento(),hoje);
         return periodo.getYears();
     }
 }
