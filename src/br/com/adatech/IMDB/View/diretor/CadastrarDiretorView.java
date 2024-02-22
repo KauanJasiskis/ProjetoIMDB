@@ -3,6 +3,7 @@ package br.com.adatech.IMDB.View.diretor;
 import br.com.adatech.IMDB.Modelo.Ator;
 import br.com.adatech.IMDB.Modelo.Diretor;
 import br.com.adatech.IMDB.View.FormataData;
+import br.com.adatech.IMDB.View.ScannerSingleton;
 import br.com.adatech.IMDB.service.exception.ModeloInvalidoException;
 import br.com.adatech.IMDB.service.services.AtorService;
 import br.com.adatech.IMDB.service.services.DiretorService;
@@ -19,11 +20,10 @@ public class CadastrarDiretorView {
     }
 
     public void execute(){
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Informe o nome do diretor");
-        String nome = scanner.nextLine();
+        String nome =  ScannerSingleton.instance().getScanner().nextLine();
         System.out.println("Agora informe a data de nascimento do diretor no formato dd/MM/yyyy");
-        String dataString = scanner.nextLine();
+        String dataString =  ScannerSingleton.instance().getScanner().nextLine();
         LocalDate data = FormataData.formatarData(dataString);
         Diretor diretor = new Diretor(nome,data);
         try {

@@ -2,6 +2,7 @@ package br.com.adatech.IMDB.View.ator;
 
 import br.com.adatech.IMDB.Modelo.Ator;
 import br.com.adatech.IMDB.Modelo.Filme;
+import br.com.adatech.IMDB.View.ScannerSingleton;
 import br.com.adatech.IMDB.service.services.AtorService;
 import br.com.adatech.IMDB.service.services.FilmeService;
 
@@ -18,11 +19,10 @@ public class AssociaAtorView {
 
     }
     public void execute(){
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Digite o nome do ator que deseja associar");
-        String nomeAtor = scanner.nextLine();
+        String nomeAtor =  ScannerSingleton.instance().getScanner().nextLine();
         System.out.println("Digite o nome do filme que deseja que o ator seja associado");;
-        String nomeFilme = scanner.nextLine();
+        String nomeFilme =  ScannerSingleton.instance().getScanner().nextLine();
         Filme filmeParaAssociar = null;
         Ator atorParaAssociar = null;
             filmeParaAssociar = filmeService.filmeUnico(nomeFilme);

@@ -3,6 +3,7 @@ package br.com.adatech.IMDB.View.ator;
 import br.com.adatech.IMDB.Modelo.Ator;
 import br.com.adatech.IMDB.Modelo.Filme;
 import br.com.adatech.IMDB.View.FormataData;
+import br.com.adatech.IMDB.View.ScannerSingleton;
 import br.com.adatech.IMDB.service.exception.ModeloInvalidoException;
 import br.com.adatech.IMDB.service.services.AtorService;
 import br.com.adatech.IMDB.service.services.FilmeService;
@@ -20,11 +21,10 @@ public class CadastraAtorView
     }
 
     public void execute(){
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Informe o nome do ator");
-        String nome = scanner.nextLine();
+        String nome =  ScannerSingleton.instance().getScanner().nextLine();
         System.out.println("Agora informe a data de nascimento do ator no formato dd/MM/yyyy");
-        String dataString = scanner.nextLine();
+        String dataString =  ScannerSingleton.instance().getScanner().nextLine();
         LocalDate data = FormataData.formatarData(dataString);
         Ator ator = new Ator(nome,data);
         try {

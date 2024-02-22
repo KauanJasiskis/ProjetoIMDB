@@ -13,8 +13,9 @@ public abstract class AbstractMenuView {
         for (String option : options) {
             System.out.println(option);
         }
-        Scanner scanner = new Scanner(System.in);
-        Integer option = scanner.nextInt();
+
+        Integer option =  ScannerSingleton.instance().getScanner().nextInt();
+        ScannerSingleton.instance().getScanner().nextLine();
         if (validOption(option)) {
             executeOption(option);
         } else {
