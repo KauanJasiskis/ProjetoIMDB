@@ -3,7 +3,9 @@ package br.com.adatech.IMDB.service.services;
 import br.com.adatech.IMDB.Modelo.Ator;
 import br.com.adatech.IMDB.Modelo.Diretor;
 import br.com.adatech.IMDB.infra.repositorio.AtorRepositorio;
+import br.com.adatech.IMDB.infra.repositorio.exception.RepositorioException;
 import br.com.adatech.IMDB.service.exception.ModeloInvalidoException;
+import br.com.adatech.IMDB.service.exception.ServiceException;
 
 import java.util.List;
 
@@ -13,20 +15,24 @@ public class AtorService
     public AtorService(AtorRepositorio repositorio){
         this.repositorio = repositorio;
     }
-    public void criar(Ator ator){
+    public void criar(Ator ator) throws ServiceException {
         if(ator == null){
-            throw new RuntimeException("Ator nao pode ser nulo");
+            throw new ModeloInvalidoException("Ator nao pode ser nulo");
         }
         if(ator.getNome()==null){
-            throw new RuntimeException("Nome do ator nao pode ser nulo");
+            throw new ModeloInvalidoException("Nome do ator nao pode ser nulo");
         }
         if(ator.getDataDeNasicmento() == null){
-            throw new RuntimeException("Data de nascimento nao pode ser nulo");
+            throw new ModeloInvalidoException("Data de nascimento nao pode ser nulo");
         }
-        repositorio.gravar(ator);
+        try {
+            repositorio.gravar(ator);
+        }catch (RepositorioException exception){
+            throw new ServiceException(exception.getMessage(),exception);
+        }
 
     }
-    public void atualizar(Ator ator) {
+    public void atualizar(Ator ator) throws ServiceException{
         if (ator == null) {
             throw new ModeloInvalidoException("Ator nao pode ser nulo");
         }
@@ -34,13 +40,17 @@ public class AtorService
             throw new ModeloInvalidoException("Nome do Ator não pode ser nulo");
         }
         if(ator.getDataDeNasicmento() == null) {
-            throw new RuntimeException("Data de nascimento nao pode ser nula");
+            throw new ModeloInvalidoException("Data de nascimento nao pode ser nula");
         }
         Ator jaExistente = (Ator) repositorio.consultarPorNomeAtor(ator.getNome());
         if (jaExistente == null) {
             throw new ModeloInvalidoException("Ator não encontrado");
         }
-        repositorio.gravar(jaExistente);
+        try {
+            repositorio.gravar(jaExistente);
+        }catch (RepositorioException exception){
+            throw new ServiceException(exception.getMessage(),exception);
+        }
     }
     public List listar(){
         return repositorio.listar();

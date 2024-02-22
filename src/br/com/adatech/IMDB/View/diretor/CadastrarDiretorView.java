@@ -5,6 +5,7 @@ import br.com.adatech.IMDB.Modelo.Diretor;
 import br.com.adatech.IMDB.View.FormataData;
 import br.com.adatech.IMDB.View.ScannerSingleton;
 import br.com.adatech.IMDB.service.exception.ModeloInvalidoException;
+import br.com.adatech.IMDB.service.exception.ServiceException;
 import br.com.adatech.IMDB.service.services.AtorService;
 import br.com.adatech.IMDB.service.services.DiretorService;
 
@@ -32,6 +33,11 @@ public class CadastrarDiretorView {
             System.out.println(exception.getMessage());
             execute();
         }
+        catch (ServiceException exception){
+            System.err.println("Ocorreu um erro tente novamente mais tarde");
+            execute();
+        }
+
     }
 }
 

@@ -2,6 +2,7 @@ package br.com.adatech.IMDB.View.filme;
 
 import br.com.adatech.IMDB.Modelo.Filme;
 import br.com.adatech.IMDB.View.ScannerSingleton;
+import br.com.adatech.IMDB.service.exception.ServiceException;
 import br.com.adatech.IMDB.service.services.FilmeService;
 
 import java.util.Scanner;
@@ -21,7 +22,12 @@ public class AvaliaFilmeView {
             Double nota =  ScannerSingleton.instance().getScanner().nextDouble();
             Filme filmeAvaliado = service.filmeUnico(filmeInformado);
             filmeAvaliado.setNotaGeral(nota);
-            service.atualizar(filmeAvaliado);
+            try {
+                service.atualizar(filmeAvaliado);
+            }catch (ServiceException exception){
+            System.err.println("Ocorreu um erro tente novamente mais tarde");
+            execute();
+        }
         }
 
     }

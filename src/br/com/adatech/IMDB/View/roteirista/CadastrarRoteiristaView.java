@@ -6,6 +6,7 @@ import br.com.adatech.IMDB.Modelo.Roteirista;
 import br.com.adatech.IMDB.View.FormataData;
 import br.com.adatech.IMDB.View.ScannerSingleton;
 import br.com.adatech.IMDB.service.exception.ModeloInvalidoException;
+import br.com.adatech.IMDB.service.exception.ServiceException;
 import br.com.adatech.IMDB.service.services.DiretorService;
 import br.com.adatech.IMDB.service.services.RoteiristaService;
 
@@ -13,25 +14,27 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-public class CadastrarRoteiristaView
-{
+public class CadastrarRoteiristaView {
     private RoteiristaService service;
 
-    public CadastrarRoteiristaView(RoteiristaService service){
+    public CadastrarRoteiristaView(RoteiristaService service) {
         this.service = service;
     }
 
-    public void execute(){
+    public void execute() {
         System.out.println("Informe o nome do Roteirista");
-        String nome =  ScannerSingleton.instance().getScanner().nextLine();
+        String nome = ScannerSingleton.instance().getScanner().nextLine();
         System.out.println("Agora informe a data de nascimento do Roteirista no formato dd/MM/yyyy");
-        String dataString =  ScannerSingleton.instance().getScanner().nextLine();
+        String dataString = ScannerSingleton.instance().getScanner().nextLine();
         LocalDate data = FormataData.formatarData(dataString);
-        Roteirista roteirista = new Roteirista(nome,data);
+        Roteirista roteirista = new Roteirista(nome, data);
         try {
             service.criar(roteirista);
-        }catch (ModeloInvalidoException exception){
+        } catch (ModeloInvalidoException exception) {
             System.out.println(exception.getMessage());
+            execute();
+        } catch (ServiceException exception) {
+            System.err.println("Ocorreu um erro tente novamente mais tarde");
             execute();
         }
     }
