@@ -22,7 +22,11 @@ public class FilmeRepositorio extends AbstractRepositorio{
             if(compararPorNomeFilmeNomeIgual(filme,nomeFilme)){
                 filmesFiltrados.add(filme);
             }
-
+            else if(!compararPorNomeFilmeNomeIgual(filme,nomeFilme)){
+                if(filme.getNome().toLowerCase().startsWith(nomeFilme.toLowerCase().substring(0,2))){
+                   filmesFiltrados.add(filme);
+                }
+            }
         }
         return filmesFiltrados;
     }
