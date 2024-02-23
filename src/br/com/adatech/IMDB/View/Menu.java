@@ -24,7 +24,7 @@ public class Menu extends AbstractMenuView {
         super(new String[]{
                 "BEM VINDO AO IMDB!",
 
-                "Selecione uma Opcao: ",
+
 
                 "1 - Cadastrar Filme",
                 "2 - Cadastrar Artista",
@@ -34,6 +34,7 @@ public class Menu extends AbstractMenuView {
                 "6 - Listar Filmes",
                 "7 - Listar Artista",
                 "0 - Sair",
+                "Selecione uma Opcao: ",
 
         });
         this.filmeService = filmeService;

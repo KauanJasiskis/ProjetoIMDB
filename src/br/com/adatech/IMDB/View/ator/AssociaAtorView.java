@@ -24,7 +24,6 @@ public class AssociaAtorView {
         System.out.println("Digite o nome do ator que deseja associar");
         String nomeAtor = ScannerSingleton.instance().getScanner().nextLine();
         System.out.println("Digite o nome do filme que deseja que o ator seja associado");
-
         String nomeFilme = ScannerSingleton.instance().getScanner().nextLine();
         Filme filmeParaAssociar = null;
         Ator atorParaAssociar = null;
