@@ -42,6 +42,7 @@ public class FilmeRepositorio extends AbstractRepositorio{
         return filmeEncontrado;
     }
 
+
     @Override
     protected Class classeModelo() {
         return Filme.class;
@@ -58,6 +59,7 @@ public class FilmeRepositorio extends AbstractRepositorio{
                 && filme.getNome() != null
                 && filme.getNome().equalsIgnoreCase(nome);
     }
+
 
 
     }

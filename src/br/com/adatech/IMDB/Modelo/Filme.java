@@ -99,6 +99,7 @@ public class Filme {
 
     }
 
+
     public Integer getVezesAvaliado() {
         return vezesAvaliado;
     }

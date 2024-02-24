@@ -21,7 +21,7 @@ public class Main {
         DiretorRepositorio diretorRepositorio = new DiretorRepositorio(bancoDeDados);
         RoteiristaRepositorio roteiristaRepositorio = new RoteiristaRepositorio(bancoDeDados);
 
-        FilmeService filmeService = new FilmeService(filmeRepositorio);
+        FilmeService filmeService = new FilmeService(filmeRepositorio,atorRepositorio,diretorRepositorio,roteiristaRepositorio);
         AtorService atorService = new AtorService(atorRepositorio);
         DiretorService diretorService = new DiretorService(diretorRepositorio);
         RoteiristaService roteiristaService = new RoteiristaService(roteiristaRepositorio);
